@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>DockyJumpList</RootNamespace>
+    <AssemblyName>DockyJumpList</AssemblyName>
+    <ApplicationIcon>src\Resources\docky.ico</ApplicationIcon>
+    <LangVersion>latest</LangVersion>
+    <Platforms>x64;x86</Platforms>
+    <StartupObject>DockyJumpList.App</StartupObject>
+    <Version>1.0.0</Version>
+    <Company>Shahaly</Company>
+    <Product>Docky Jump List</Product>
+    <Description>Lightweight Windows system-tray shortcut launcher</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="10.0.5" />
+  </ItemGroup>
+
+  <!-- Resources embedded into the assembly -->
+  <ItemGroup>
+    <Resource Include="src\Resources\Styles.xaml" />
+    <Resource Include="src\Resources\docky.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Include="src\App.xaml" SubType="Designer" Generator="MSBuild:Compile" />
+    <Page Remove="src\App.xaml" />
+  </ItemGroup>
+
+</Project>
