@@ -38,6 +38,7 @@ No external NuGet packages required.
 ```
 DockyJumpList/
 ├── DockyJumpList.csproj
+├── DockyJumpList.sln
 ├── app.manifest
 ├── README.md
 │
@@ -67,7 +68,7 @@ DockyJumpList/
 │   │
 │   └── Resources/
 │       ├── Styles.xaml                     ← Shared WPF dark theme styles
-│       └── docky.ico                       ← Tray icon (you must supply this)
+│       └── docky.ico                       ← Tray icon
 │
 └── docs/
     └── ARCHITECTURE.md                     ← Deep-dive design document
@@ -86,15 +87,11 @@ cd DockyJumpList
 
 Or download the ZIP and extract it anywhere.
 
-### 2. Add a tray icon
+### 2. Open in Visual Studio
 
-Place a `.ico` file at `src/Resources/docky.ico`. Any 16×32px icon works. You can convert a PNG at [convertio.co](https://convertio.co/png-ico/).
+Open `DockyJumpList.csproj` directly in Visual Studio 2022 or 2026. or the solution file.
 
-### 3. Open in Visual Studio
-
-Open `DockyJumpList.csproj` directly in Visual Studio 2022 or 2026. No solution file needed.
-
-### 4. Build and run
+### 3. Build and run
 
 Press `F5`. No window will open — look for the Docky icon in your system tray (bottom-right, near the clock).
 
