@@ -9,6 +9,7 @@ Docky lives silently in your taskbar tray. Right-click its icon to instantly lau
 ## Features
 
 - **Custom jump list** — right-click the tray icon to see all your shortcuts in a clean dark menu
+- **Windows taskbar jump list** — right-click the pinned taskbar button to access your shortcuts natively through Windows
 - **App & URL shortcuts** — supports local `.exe` files and `https://` web links
 - **Global hotkey** — press `Ctrl + Alt + D` from anywhere to open the menu at your cursor
 - **Settings panel** — left-click the tray icon to add, edit, remove, and reorder shortcuts
@@ -57,6 +58,7 @@ DockyJumpList/
 │   │   ├── SingleInstanceManager.cs        ← Mutex-based single instance guard
 │   │   ├── GlobalHotkeyService.cs          ← Win32 RegisterHotKey wrapper
 │   │   ├── IconCacheService.cs             ← Async .exe icon extraction + cache
+│   │   ├── JumpListService.cs              ← Windows taskbar Jump List builder
 │   │   └── DockyMenuRenderer.cs            ← Custom dark WinForms menu renderer
 │   │
 │   ├── ViewModels/
@@ -102,6 +104,7 @@ Press `F5`. No window will open — look for the Docky icon in your system tray 
 | Action | Result |
 |---|---|
 | Right-click tray icon | Opens the jump list menu |
+| Right-click taskbar button | Opens the native Windows Jump List |
 | Left-click tray icon | Opens the Settings panel |
 | `Ctrl + Alt + D` | Opens jump list at cursor position |
 | Click a shortcut | Launches the app or opens the URL |
@@ -119,8 +122,10 @@ All data is stored per-user with no admin rights required:
 
 ```
 %AppData%\DockyJumpList\
-    shortcuts.json      ← Your saved shortcuts
-    settings.json       ← Your preferences
+    shortcuts.json          ← Your saved shortcuts
+    settings.json           ← Your preferences
+    jumplist-urls\          ← Auto-generated .url shell-link files for URL shortcuts
+                               (used by the Windows taskbar Jump List — do not edit manually)
 ```
 
 You can back these up, share them between machines, or edit them manually in any text editor.
